@@ -30,12 +30,16 @@ Unattended-Upgrade::Allowed-Origins {
 ....
 ```
 * Check to see if they are included:
-```
-$ sudo unattended-upgrade --dry-run
-$ tail -5 /var/log/unattended-upgrades/unattended-upgrades.log
-2016-06-29 12:30:36,259 INFO Initial blacklisted packages: 
-2016-06-29 12:30:36,259 INFO Initial whitelisted packages: 
-2016-06-29 12:30:36,259 INFO Starting unattended upgrades script
-2016-06-29 12:30:36,259 INFO Allowed origins are: ['o=Ubuntu,a=xenial-security', 'o=Ubuntu,a=xenial-updates', 'o=Ubuntu,a=xenial-proposed', 'o=Ubuntu,a=xenial-backports', 'o=Ubuntu,a=xenial', 'o=LP-PPA-kubuntu-ppa-backports,a=xenial', 'o=LP-PPA-tuxonice,a=xenial', 'o=LP-PPA-webupd8team-sublime-text-3,a=xenial']
-2016-06-29 12:30:38,708 INFO No packages found that can be upgraded unattended and no pending auto-removals
+``` 
+$ sudo unattended-upgrade --dry-run --debug
+Initial blacklisted packages: 
+Initial whitelisted packages: 
+Starting unattended upgrades script
+Allowed origins are: ['o=Ubuntu,a=xenial-security', 'o=Ubuntu,a=xenial-updates', 'o=Ubuntu,a=xenial-proposed', 'o=Ubuntu,a=xenial-backports', 'o=Ubuntu,a=xenial', 'o=LP-PPA-kubuntu-ppa-backports,a=xenial', 'o=LP-PPA-tuxonice,a=xenial', 'o=LP-PPA-webupd8team-sublime-text-3,a=xenial']
+pkgs that look like they should be upgraded: 
+Fetched 0 B in 0s (0 B/s)                                                                                  
+fetch.run() result: 0
+blacklist: []
+whitelist: []
+No packages found that can be upgraded unattended and no pending auto-removals
 ```
