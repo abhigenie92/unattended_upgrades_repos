@@ -1,5 +1,5 @@
 # how to run
-1. Check repositories to add:
+* Check repositories to add:
 ```
 $ python automatic_upgrade.py 
 Add repos:
@@ -13,7 +13,7 @@ packagecloud.io_slacktechnologies_slack_debian_dists_jessie_InRelease
 tiliado.eu_nuvolaplayer_repository_deb_dists_xenial_InRelease
 ```
 
-2. Now edit `/etc/apt/apt.conf.d/50unattended-upgrades` to include them:
+* Now edit `/etc/apt/apt.conf.d/50unattended-upgrades` to include them:
 ```
 // Automatically upgrade packages from these (origin:archive) pairs
 Unattended-Upgrade::Allowed-Origins {
@@ -29,7 +29,7 @@ Unattended-Upgrade::Allowed-Origins {
 ....
 ....
 ```
-3. Check to see if they are included:
+* Check to see if they are included:
 ```
 $ sudo unattended-upgrade --dry-run
 $ tail -5 /var/log/unattended-upgrades/unattended-upgrades.log
