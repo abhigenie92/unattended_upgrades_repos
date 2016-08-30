@@ -4,11 +4,10 @@
 ### Procedure:
 Follow the steps below:
 
-	1. Install unattended-upgrade
-		```
-	 	sudo apt-get install unattended-upgrades
-		```
-	2. Discover it works only for official repos. by default. 
+1. Install unattended-upgrade
+```sudo apt-get install unattended-upgrades```
+
+2. Discover it works only for official repos. by default. 
 
 ### Problem:
 To make it work for all repos. you need to add each source to the config file manually. This might become hassle each time you install a new software on your machine. May even lead to duplicate or unwanted entries or just a mere waste of time!!!
