@@ -1,17 +1,18 @@
-> How to enable silent automatic updates for any repository?
+
 
 #  what is this?
+> How to enable silent automatic updates for any repository?(http://askubuntu.com/q/87849/417607)
+
 ### Procedure:
 Follow the steps below:
 
 1. Install unattended-upgrade
 ```sudo apt-get install unattended-upgrades```
 
-2. Discover it works only for official repos. by default. 
+2. Discover it works only for security updates from official repos. by default. 
 
 ### Problem:
 To make it work for all repos. you need to add each source to the config file manually. This might become hassle each time you install a new software on your machine. May even lead to duplicate or unwanted entries or just a mere waste of time!!!
-Stackoverflow question: http://askubuntu.com/q/87849/417607
 
 ### Solution:
 Run this simple code. 
