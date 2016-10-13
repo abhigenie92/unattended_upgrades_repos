@@ -12,7 +12,7 @@ Follow the steps below:
 2. Discover it works only for security updates from official repos. by default. 
 
 ### Problem:
-To make it work for all repos. you need to add each source to the config file manually. This might become hassle each time you install a new software on your machine. May even lead to duplicate or unwanted entries or just a mere waste of time!!!
+To make it work for all repos, you need to add each source to the config file manually. This might become hassle each time you install a new software on your machine. It may even lead to duplicate or unwanted entries or just a mere waste of time!!!
 
 ### Solution:
 Run this simple code. 
