@@ -42,11 +42,11 @@ for release_file in RELEASE_FILES:
     with open(PATH+release_file, 'r') as f:
         read_data = f.read()
         # parse to get origin and suite
-        origin_string = re.findall(ORIGIN_PATTERN, read_data)[0]
-        origin_replaced = origin_string.replace(',', r'\,').replace(DISTRO, '${distro_id}')
-        suite_string = re.findall(SUITE_PATTERN, read_data)[0]
-        suite_replaced = suite_string.replace(',', r'\,').replace(CODENAME, '${distro_codename}')
         try:
+            origin_string = re.findall(ORIGIN_PATTERN, read_data)[0]
+            origin_replaced = origin_string.replace(',', r'\,').replace(DISTRO, '${distro_id}')
+            suite_string = re.findall(SUITE_PATTERN, read_data)[0]
+            suite_replaced = suite_string.replace(',', r'\,').replace(CODENAME, '${distro_codename}')
             repo = "\"%s:%s\";" %(origin_replaced, suite_replaced)
             if re.match(REGEX_URL, origin_string):
                 skipped_release_files.append(release_file)
