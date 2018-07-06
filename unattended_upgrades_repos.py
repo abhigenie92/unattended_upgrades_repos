@@ -1,5 +1,6 @@
 import os,re,pdb
 from pprint import pprint
+
 ## Get the repos
 path='/var/lib/apt/lists/'
 files=os.listdir(path)
@@ -43,8 +44,17 @@ with open('/etc/apt/apt.conf.d/50unattended-upgrades','r') as f:
   raw_data=re.findall('[.\s\S]*};',read_data)
   repos_already_present=re.findall('".*:.*";',raw_data[0])
 
+
 repos_to_add=[repo for repo in repos_to_add if repo not in repos_already_present]
-print ("Add repos:")
-print ('\n'.join(repos_to_add))
-print ("\nSkipping files due to not present origin or suite. Or origin being a url.:")
-print ('\n'.join(skipped_release_files))
+
+if len(repos_to_add) != 0:
+  print ("Add repos:")
+  print ('\n'.join(repos_to_add))
+else:
+  print ("No new repos found that needs to be added.")
+
+if len(skipped_release_files) != 0:
+  print ("\nSkipping files due to not present origin or suite. Or origin being a url.:")
+  print ('\n'.join(skipped_release_files))
+else:
+  print ("No repos were skipped.")
