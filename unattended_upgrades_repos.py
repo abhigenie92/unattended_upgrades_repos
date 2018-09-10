@@ -2,12 +2,12 @@ import os,re,pdb
 from pprint import pprint
 
 ## Get the repos
-path = '/var/lib/apt/lists/'
-files = os.listdir(path)
+PATH = '/var/lib/apt/lists/'
+files = os.listdir(PATH)
 release_files = [file for file in files if file.endswith('Release')]
 
-origin_pattern = re.compile('Origin: (.*)\n')
-suite_pattern = re.compile('Suite: (.*)\n')
+ORIGIN_PATTERN = re.compile('Origin: (.*)\n')
+SUITE_PATTERN = re.compile('Suite: (.*)\n')
 regex_url = re.compile(
         r'^(?:http|ftp)s?://' # http:// or https://
         r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' #domain...
@@ -22,8 +22,8 @@ for release_file in release_files:
   with open(path+release_file, 'r') as f:
     read_data = f.read()
     # parse to get origin and suite
-    origin_string = re.findall(origin_pattern,read_data)
-    suite_string = re.findall(suite_pattern,read_data)
+    origin_string = re.findall(ORIGIN_PATTERN, read_data)
+    suite_string = re.findall(SUITE_PATTERN, read_data)
     try:
       repo = "\"%s:%s\";" %(origin_string[0].replace(',',r'\,'),
                             suite_string[0].replace(',',r'\,'))
@@ -45,7 +45,7 @@ with open('/etc/apt/apt.conf.d/50unattended-upgrades','r') as f:
   repos_already_present=re.findall('".*:.*";',raw_data[0])
 
 
-repos_to_add=[repo for repo in repos_to_add if repo not in repos_already_present]
+repos_to_add = [repo for repo in repos_to_add if repo not in repos_already_present]
 
 if len(repos_to_add) != 0:
   print ("Add repos:")
