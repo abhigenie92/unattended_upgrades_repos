@@ -27,7 +27,7 @@ for release_file in release_files:
     try:
       repo = "\"%s:%s\";" %(origin_string[0].replace(',',r'\,'),
                             suite_string[0].replace(',',r'\,'))
-      if re.match(regex_url,origin_string[0]):
+      if re.match(regex_url, origin_string[0]):
         skipped_release_files.append(release_file)
       else:
         repos_to_add.append(repo)
@@ -37,11 +37,11 @@ for release_file in release_files:
 
 
 ## Checking if repos_to_add not already present  in /etc/apt/apt.conf.d/50unattended-upgrades
-with open('/etc/apt/apt.conf.d/50unattended-upgrades','r') as f:
+with open('/etc/apt/apt.conf.d/50unattended-upgrades', 'r') as f:
   read_data = f.read()
   # get everything before first };
-  raw_data = re.findall('[.\s\S]*};',read_data)
-  repos_already_present=re.findall('".*:.*";',raw_data[0])
+  raw_data = re.findall('[.\s\S]*};', read_data)
+  repos_already_present=re.findall('".*:.*";', raw_data[0])
 
 
 repos_to_add = [repo for repo in repos_to_add if repo not in repos_already_present]
