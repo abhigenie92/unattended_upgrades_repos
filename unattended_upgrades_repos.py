@@ -19,7 +19,7 @@ regex_url = re.compile(
 skipped_release_files = []
 repos_to_add = []
 for release_file in release_files:
-  with open(path+release_file, 'r') as f:
+  with open(PATH + release_file, 'r') as f:
     read_data = f.read()
     # parse to get origin and suite
     origin_string = re.findall(ORIGIN_PATTERN, read_data)
