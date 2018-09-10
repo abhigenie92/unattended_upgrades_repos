@@ -37,7 +37,6 @@ for release_file in release_files:
 
 
 ## Checking if repos_to_add not already present  in /etc/apt/apt.conf.d/50unattended-upgrades
-
 with open('/etc/apt/apt.conf.d/50unattended-upgrades','r') as f:
   read_data = f.read()
   # get everything before first };
