@@ -34,8 +34,6 @@ for release_file in release_files:
     except IndexError:
       skipped_release_files.append(release_file)
 
-
-
 ## Checking if repos_to_add not already present  in /etc/apt/apt.conf.d/50unattended-upgrades
 with open('/etc/apt/apt.conf.d/50unattended-upgrades', 'r') as f:
   read_data = f.read()
@@ -45,7 +43,6 @@ with open('/etc/apt/apt.conf.d/50unattended-upgrades', 'r') as f:
   distro_id, _, distro_codename = platform.linux_distribution()
   clean_data = raw_data[0].replace("${distro_id}",distro_id).replace("${distro_codename}",distro_codename)
   repos_already_present = re.findall('".*:.*";', clean_data)
-
 
 repos_to_add = [repo for repo in repos_to_add if repo not in repos_already_present]
 
