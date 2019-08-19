@@ -50,7 +50,7 @@ if len(repos_to_add) != 0:
   print ("Add repos:")
   print ('\n'.join(repos_to_add))
 else:
-  print ("No new repos found that needs to be added.")
+  print ("No new repos found that need to be added.")
 
 if len(skipped_release_files) != 0:
   print ("\nSkipping files due to not present origin or suite. Or origin being a url.:")
