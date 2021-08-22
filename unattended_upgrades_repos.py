@@ -20,6 +20,19 @@ regex_url = re.compile(
 
 skipped_release_files = []
 repos_to_add = []
+def _get_linux_distro():
+    with open('/etc/os-release') as lines:
+      tokens = [line.strip() for line in lines]
+
+    release_info = {}
+    for token in tokens:
+        if '=' in token:
+            k, v = token.split('=', 1)
+            release_info[k.lower()] = v.strip('"')
+    return release_info.get('name', None), release_info.get('version_id', None)
+
+
+
 for release_file in release_files:
     with open(PATH + release_file, "r") as f:
         read_data = f.read()
@@ -38,13 +51,14 @@ for release_file in release_files:
         except IndexError:
             skipped_release_files.append(release_file)
 
+
 ## Checking if repos_to_add not already present  in /etc/apt/apt.conf.d/50unattended-upgrades
 with open("/etc/apt/apt.conf.d/50unattended-upgrades", "r") as f:
     read_data = f.read()
     # get everything before first };
     raw_data = re.findall("[.\s\S]*};", read_data)
     # replace linux placeholders
-    distro_id, _, distro_codename = platform.linux_distribution()
+    distro_id, distro_codename = _get_linux_distro()
     clean_data = (
         raw_data[0]
         .replace("${distro_id}", distro_id)
