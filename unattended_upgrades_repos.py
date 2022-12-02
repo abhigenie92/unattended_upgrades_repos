@@ -1,4 +1,4 @@
-import os, re, pdb, platform
+import os, re, pdb, distro
 from pprint import pprint
 
 ## Get the repos
@@ -44,7 +44,7 @@ with open("/etc/apt/apt.conf.d/50unattended-upgrades", "r") as f:
     # get everything before first };
     raw_data = re.findall("[.\s\S]*};", read_data)
     # replace linux placeholders
-    distro_id, _, distro_codename = platform.linux_distribution()
+    distro_id, _, distro_codename = distro.linux_distribution()
     clean_data = (
         raw_data[0]
         .replace("${distro_id}", distro_id)
