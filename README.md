@@ -19,7 +19,7 @@ Run this simple code.
 # how to run this?
 * Check repositories to add:
 ```
-$ python automatic_upgrade.py 
+$ python unattended_upgrades_repos.py
 Add repos:
 "Ubuntu:xenial";
 "LP-PPA-kubuntu-ppa-backports:xenial";
