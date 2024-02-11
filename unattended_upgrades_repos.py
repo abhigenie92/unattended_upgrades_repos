@@ -1,5 +1,4 @@
-import os, re, pdb, distro
-from pprint import pprint
+import os, re, distro
 
 ## Get the repos
 PATH = "/var/lib/apt/lists/"
@@ -44,7 +43,8 @@ with open("/etc/apt/apt.conf.d/50unattended-upgrades", "r") as f:
     # get everything before first };
     raw_data = re.findall("[.\s\S]*};", read_data)
     # replace linux placeholders
-    distro_id, _, distro_codename = distro.linux_distribution()
+    distro_id = distro.id()
+    distro_codename = distro.codename() if hasattr(distro, 'codename') else distro.name()
     clean_data = (
         raw_data[0]
         .replace("${distro_id}", distro_id)
@@ -67,3 +67,4 @@ if len(skipped_release_files) != 0:
     print("\n".join(skipped_release_files))
 else:
     print("No repos were skipped.")
+    
