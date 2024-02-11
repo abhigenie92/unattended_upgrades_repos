@@ -67,3 +67,4 @@ if len(skipped_release_files) != 0:
     print("\n".join(skipped_release_files))
 else:
     print("No repos were skipped.")
+    
